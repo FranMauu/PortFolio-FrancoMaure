@@ -289,14 +289,14 @@
           <!-- Controles táctiles para Snake debajo del canvas -->
           <div id="snake-touch-controls" class="snake-touch-controls" style="display:none; margin-top:1rem; text-align:center;">
             <div style="display:flex; flex-direction:column; align-items:center;">
-              <button class="snake-btn" data-dir="up" style="margin-bottom:8px;">⬆️</button>
+              <div>
+                <button class="snake-btn" data-dir="up" style="margin-bottom:8px;">⬆️</button>
+              </div>
               <div>
                 <button class="snake-btn" data-dir="left" style="margin-right:18px;">⬅️</button>
-                <button class="snake-btn" data-dir="right">➡️</button>
                 <button class="snake-btn" data-dir="down" style="margin-right:18px;">⬇️</button>
-                
+                <button class="snake-btn" data-dir="right">➡️</button>
               </div>
-            
             </div>
           </div>
         </div>
@@ -322,8 +322,8 @@
             <button class="game2048-btn" data-dir="up" style="margin-bottom:8px;">⬆️</button>
             <div>
               <button class="game2048-btn" data-dir="left" style="margin-right:18px;">⬅️</button>
-              <button class="game2048-btn" data-dir="right">➡️</button>
               <button class="game2048-btn" data-dir="down" style="margin-right:18px;">⬇️</button>
+              <button class="game2048-btn" data-dir="right">➡️</button>
             </div>
           </div>
         </div>
@@ -793,6 +793,24 @@
         resetGame();
         draw();
       };
+      const touchControls = document.getElementById('snake-touch-controls');
+      if (touchControls) {
+        touchControls.querySelectorAll('.snake-btn').forEach(btn => {
+          btn.onclick = () => {
+            if (gameOver) return;
+            let dir;
+            switch (btn.dataset.dir) {
+              case 'up': dir = {x:0, y:-1}; break;
+              case 'down': dir = {x:0, y:1}; break;
+              case 'left': dir = {x:-1, y:0}; break;
+              case 'right': dir = {x:1, y:0}; break;
+            }
+            if (dir && !isOpposite(dir, velocity)) {
+              nextVelocity = dir;
+            }
+          };
+        });
+      }
       resetGame();
       draw();
       requestAnimationFrame(gameLoop);
@@ -947,6 +965,17 @@
         if(!["ArrowLeft","ArrowRight","ArrowUp","ArrowDown"].includes(e.key)) return;
         move(e.key.replace("Arrow","").toLowerCase());
       });
+      const touchControls2048 = document.getElementById('game2048-touch-controls');
+      if (touchControls2048) {
+        touchControls2048.querySelectorAll('.game2048-btn').forEach(btn => {
+          btn.onclick = () => {
+            const dir = btn.dataset.dir;
+            if (["up", "down", "left", "right"].includes(dir)) {
+              move(dir);
+            }
+          };
+        });
+      }
       reset();
     })();
 
@@ -1033,14 +1062,6 @@
       }
       render();
     })();
-
-    // Scroll suave a cada juego (funciona en móvil)
-    function scrollToGame(id) {
-      var el = document.getElementById(id);
-      if (el) {
-        el.scrollIntoView({behavior: "smooth", block: "center"});
-      }
-    }
   </script>
 </body>
 </html>
