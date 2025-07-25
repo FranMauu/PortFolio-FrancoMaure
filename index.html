@@ -280,11 +280,23 @@
         <div id="ticTacToeGame"></div>
         <div class="desc">Haz clic en una celda para jugar. El primero en alinear tres gana.</div>
       </article>
+      <!-- Snake -->
       <article class="example">
         <h3>Snake</h3>
         <div class="python-game">
           <canvas id="snakeCanvas" width="700" height="350"></canvas>
           <p class="instructions">Usa las flechas del teclado para mover la serpiente y come la comida roja. ¡No choques contigo ni con las paredes!</p>
+          <!-- Controles táctiles para Snake debajo del canvas -->
+          <div id="snake-touch-controls" class="snake-touch-controls" style="display:none; margin-top:1rem; text-align:center;">
+            <div style="display:flex; flex-direction:column; align-items:center;">
+              <button class="snake-btn" data-dir="up" style="margin-bottom:8px;">⬆️</button>
+              <div>
+                <button class="snake-btn" data-dir="left" style="margin-right:18px;">⬅️</button>
+                <button class="snake-btn" data-dir="down" style="margin-right:18px;">⬇️</button>
+                <button class="snake-btn" data-dir="right">➡️</button>
+              </div>
+            </div>
+          </div>
         </div>
       </article>
       <article class="example">
@@ -297,10 +309,22 @@
         <div class="hangman-game" id="hangmanGame"></div>
         <div class="desc">Adivina la palabra letra por letra antes de cometer 6 errores.</div>
       </article>
+      <!-- 2048 -->
       <article class="example">
         <h3>2048</h3>
         <div class="game2048" id="game2048"></div>
         <div class="desc">Usa las flechas del teclado para combinar los números y llegar a 2048.</div>
+        <!-- Controles táctiles para 2048 debajo del juego -->
+        <div id="game2048-touch-controls" class="game2048-touch-controls" style="display:none; margin-top:1rem; text-align:center;">
+          <div style="display:flex; flex-direction:column; align-items:center;">
+            <button class="game2048-btn" data-dir="up" style="margin-bottom:8px;">⬆️</button>
+            <div>
+              <button class="game2048-btn" data-dir="left" style="margin-right:18px;">⬅️</button>
+              <button class="game2048-btn" data-dir="down" style="margin-right:18px;">⬇️</button>
+              <button class="game2048-btn" data-dir="right">➡️</button>
+            </div>
+          </div>
+        </div>
       </article>
     </section>
 
