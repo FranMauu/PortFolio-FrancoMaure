@@ -795,20 +795,20 @@
       };
       const touchControls = document.getElementById('snake-touch-controls');
       if (touchControls) {
-        touchControls.querySelectorAll('.snake-btn').forEach(btn => {
-          btn.onclick = () => {
-            if (gameOver) return;
-            let dir;
-            switch (btn.dataset.dir) {
-              case 'up': dir = {x:0, y:-1}; break;
-              case 'down': dir = {x:0, y:1}; break;
-              case 'left': dir = {x:-1, y:0}; break;
-              case 'right': dir = {x:1, y:0}; break;
-            }
-            if (dir && !isOpposite(dir, velocity)) {
-              nextVelocity = dir;
-            }
-          };
+        // Delegación de eventos para que funcione tras cada render
+        touchControls.addEventListener('click', function(e) {
+          if (!e.target.classList.contains('snake-btn')) return;
+          if (gameOver) return;
+          let dir;
+          switch (e.target.dataset.dir) {
+            case 'up': dir = {x:0, y:-1}; break;
+            case 'down': dir = {x:0, y:1}; break;
+            case 'left': dir = {x:-1, y:0}; break;
+            case 'right': dir = {x:1, y:0}; break;
+          }
+          if (dir && !isOpposite(dir, velocity)) {
+            nextVelocity = dir;
+          }
         });
       }
       resetGame();
