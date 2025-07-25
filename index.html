@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+  <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8" />
@@ -197,6 +198,29 @@
         display: none !important;
       }
     }
+    @media (max-width: 600px) {
+      #mobile-game-buttons {
+        display: block !important;
+      }
+      .mobile-game-btn {
+        display: block;
+        width: 90%;
+        margin: 0.5rem auto;
+        padding: 0.9rem 0;
+        background: #f97316;
+        color: #181818;
+        font-size: 1.15rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 0.7rem;
+        box-shadow: 0 2px 8px #f9731633;
+        transition: background 0.2s;
+      }
+      .mobile-game-btn:active,
+      .mobile-game-btn:hover {
+        background: #fb923c;
+      }
+    }
   </style>
 </head>
 <body>
@@ -214,6 +238,15 @@
   </nav>
 
   <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Botones de juegos solo en móvil -->
+    <div id="mobile-game-buttons" style="display:none; margin: 1.5rem 0; text-align:center;">
+      <button class="mobile-game-btn" onclick="scrollToGame('ticTacToeGame')">Jugar Tic Tac Toe</button>
+      <button class="mobile-game-btn" onclick="scrollToGame('snakeCanvas')">Jugar Snake</button>
+      <button class="mobile-game-btn" onclick="scrollToGame('pptGame')">Jugar Piedra, Papel o Tijera</button>
+      <button class="mobile-game-btn" onclick="scrollToGame('hangmanGame')">Jugar Ahorcado</button>
+      <button class="mobile-game-btn" onclick="scrollToGame('game2048')">Jugar 2048</button>
+    </div>
 
     <!-- Juegos -->
     <section id="juegos" class="fade-in-section">
@@ -950,6 +983,14 @@
       }
       render();
     })();
+
+    // Scroll suave a cada juego (funciona en móvil)
+    function scrollToGame(id) {
+      var el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({behavior: "smooth", block: "center"});
+      }
+    }
   </script>
 </body>
 </html>
