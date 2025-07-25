@@ -131,6 +131,72 @@
     body { padding-top: 70px; }
     .todo-app li.added { animation: todoAdded 0.7s;}
     @keyframes todoAdded { 0% {background:#fb923c44;} 100% {background:transparent;} }
+    @media (max-width: 900px) {
+      .certificate {
+        padding: 1.2rem 0.5rem;
+        margin: 1.5rem 0;
+      }
+      .certificate img {
+        max-width: 98vw;
+        height: auto;
+      }
+      .certificate .title {
+        font-size: 1.3rem;
+      }
+      .certificate .author {
+        font-size: 1rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .section-title {
+        font-size: 1.2rem;
+        margin: 1.2rem 0 0.7rem 0;
+      }
+      .certificate {
+        padding: 0.7rem 0.2rem;
+        margin: 1rem 0;
+        font-size: 0.98rem;
+      }
+      .certificate img {
+        max-width: 100vw;
+        border-radius: 0.3rem;
+      }
+      .certificate .title {
+        font-size: 1.1rem;
+      }
+      .certificate .author {
+        font-size: 0.95rem;
+      }
+      .cart-app, .todo-app, .python-game, .ppt-game, .hangman-game, .game2048 {
+        padding: 0.7rem 0.2rem;
+        font-size: 1rem;
+        min-height: 0;
+      }
+      .tic-tac-toe {
+        grid-template-columns: repeat(3, 50px);
+        grid-template-rows: repeat(3, 50px);
+        gap: 5px;
+      }
+      .tic-tac-toe button {
+        font-size: 1.3rem;
+        padding: 0;
+      }
+      .game2048 .board {
+        grid-template-columns: repeat(4, 38px);
+        grid-gap: 3px;
+      }
+      .game2048 .tile {
+        width: 38px;
+        height: 38px;
+        font-size: 0.9rem;
+      }
+    }
+    @media (max-width: 600px) {
+      /* Oculta la sección de certificados en móvil */
+      #certificados {
+        display: none !important;
+      }
+    }
   </style>
 </head>
 <body>
